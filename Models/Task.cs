@@ -1,7 +1,7 @@
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace TaksApi.Models
+namespace TodoList.Models
 {
     public class Task
     {
