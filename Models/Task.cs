@@ -10,6 +10,6 @@ namespace TodoList.Models
         public string Id { get; set; }
 
         public string Name {get; set; }
-        public string Uset {get; set; }
+        public string User {get; set; }
     }
 }

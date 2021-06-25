@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using TodoList.Models;
+using TodoList.Services;
 
 namespace todo_list
 {
@@ -29,6 +30,8 @@ namespace todo_list
 
             services.AddSingleton<ITodoListDatabaseSettings>(sp =>
             sp.GetRequiredService<IOptions<TodoListDatabaseSettings>>().Value);
+
+            services.AddSingleton<TasksService>();
 
             services.AddControllers();
 
