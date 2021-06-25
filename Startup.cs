@@ -33,7 +33,8 @@ namespace todo_list
 
             services.AddSingleton<TasksService>();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(options => options.UseMemberCasing());
 
             //services.AddControllersWithViews();
 
