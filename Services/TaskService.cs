@@ -8,10 +8,9 @@ namespace TodoList.Services {
     public class TasksService {
         private readonly IMongoCollection<TodoList.Models.Task> _tasks;
 
-        public TasksService(ITodoListDatabaseSettings settings) {
+        public TasksService(ITodoListDbSettings settings) {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-
             _tasks = database.GetCollection<TodoList.Models.Task>(settings.TaskCollectionName);
         }
 
@@ -27,5 +26,7 @@ namespace TodoList.Services {
         public void Update(string id, TodoList.Models.Task taskIn) => _tasks.ReplaceOne(task => task.Id == id, taskIn);
 
         public void Remove(TodoList.Models.Task taskIn) => _tasks.DeleteOne(task => task.Id == taskIn.Id);
+
+        public void Remove(string id) => _tasks.DeleteOne(task => task.Id == id);
     }
 }

@@ -24,12 +24,12 @@ namespace todo_list
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.Configure<TodoList.Models.TodoListDatabaseSettings>(
-                Configuration.GetSection(nameof(TodoListDatabaseSettings))
+            services.Configure<TodoList.Models.TodoListDbSettings>(
+                Configuration.GetSection(nameof(TodoListDbSettings))
             );
 
-            services.AddSingleton<ITodoListDatabaseSettings>(sp =>
-            sp.GetRequiredService<IOptions<TodoListDatabaseSettings>>().Value);
+            services.AddSingleton<ITodoListDbSettings>(sp =>
+            sp.GetRequiredService<IOptions<TodoListDbSettings>>().Value);
 
             services.AddSingleton<TasksService>();
 
